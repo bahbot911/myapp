@@ -22,8 +22,8 @@
     <script type="module">
         // Здесь позже подключим Supabase
         import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
-        const supabaseUrl = 'https://ВАШ_ПРОЕКТ.supabase.co'
-        const supabaseKey = 'ВАШ_ANON_KEY'
+        const supabaseUrl = 'https://phpukzhnvugluwnznygk.supabase.co/rest/v1/'
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBocHVremhudnVnbHV3bnpueWdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyMDEzNDQsImV4cCI6MjEwODc3NzM0NH0.T5KJIbxJNFYI3m7WtdPjP4_0ZUPIEYWsxmj3i6MD3gg'
         const supabase = createClient(supabaseUrl, supabaseKey)
 
         window.login = async () => {
