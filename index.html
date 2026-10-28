@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моё приложение</title>
+    <style>
+        body { font-family: sans-serif; max-width: 400px; margin: 50px auto; padding: 20px; }
+        input, button { width: 100%; padding: 10px; margin: 5px 0; box-sizing: border-box; }
+        button { background: #3b82f6; color: white; border: none; cursor: pointer; }
+        #message { margin-top: 10px; color: green; }
+    </style>
+</head>
+<body>
+    <h2>Вход</h2>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Пароль" required>
+    <button onclick="login()">Войти</button>
+    <button onclick="signUp()" style="background: #10b981;">Зарегистрироваться</button>
+    <p id="message"></p>
+
+    <script type="module">
+        // Здесь позже подключим Supabase
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+        const supabaseUrl = 'https://ВАШ_ПРОЕКТ.supabase.co'
+        const supabaseKey = 'ВАШ_ANON_KEY'
+        const supabase = createClient(supabaseUrl, supabaseKey)
+
+        window.login = async () => {
+            const email = document.getElementById('email').value
+            const password = document.getElementById('password').value
+            const { error } = await supabase.auth.signInWithPassword({ email, password })
+            document.getElementById('message').textContent = error ? error.message : 'Вход выполнен!'
+        }
+
+        window.signUp = async () => {
+            const email = document.getElementById('email').value
+            const password = document.getElementById('password').value
+            const { error } = await supabase.auth.signUp({ email, password })
+            document.getElementById('message').textContent = error ? error.message : 'Проверьте почту для подтверждения'
+        }
+    </script>
+</body>
+</html>
